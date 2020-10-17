@@ -1,22 +1,5 @@
 <template>
   <div class="top">
-    <br>
-    <div class="messages" v-if="tracks.error_name">
-      <v-alert
-          color="red"
-          outlined
-          prominent
-          dismissible
-          text
-          type="error"
-
-          v-if="tracks.error_name"
-      >
-        {{ tracks.error_description }}
-      </v-alert>
-    </div>
-    <br>
-
     <v-progress-linear v-if="loading" value="100" indeterminate></v-progress-linear>
 
     <v-list>
