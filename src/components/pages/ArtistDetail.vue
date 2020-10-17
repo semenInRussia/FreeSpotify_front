@@ -1,14 +1,16 @@
 <template>
   <div>
-    <v-btn @click="fetchArtistInfo(artist_name)" type="primary" outlined>
-      Get info!
-    </v-btn>
+    <!--    Artist info-->
+    <v-row align-content="center">
+      <v-col cols="10">
+        <v-img :src="artist.img_link" contain max-width="800px"></v-img>
+      </v-col>
+      <v-col cols="2">
+        <h1>{{ artist.name }}</h1>
+      </v-col>
+    </v-row>
+    <h2>Track top:</h2>
 
-    <v-list>
-      <v-list-item>
-        <v-list-item-title>{{ artist.name }}</v-list-item-title>
-      </v-list-item>
-    </v-list>
 
     <v-list>
       <v-list-item v-for="track in artist.top" :key="track.top_number">
@@ -41,6 +43,9 @@ export default {
     }
   },
 
+  mounted() {
+    this.fetchArtistInfo(this.artist_name)
+  },
   methods: mapActions([`fetchArtistInfo`]),
   computed: mapGetters([`artist`])
 }

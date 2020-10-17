@@ -17,7 +17,7 @@ const router = new VueRouter({
             component: () => import("./components/pages/WatchTop.vue"),
         },
         {
-            path: "/artists",
+            path: "/artists/:artist_name",
             name: "artist_detail",
             meta: {},
             component: () => import("./components/pages/ArtistDetail.vue")
