@@ -1,9 +1,7 @@
 <template>
   <div class="top">
-    <v-progress-linear v-if="loading" value="100" indeterminate></v-progress-linear>
-
-    <v-list>
-      <v-list-item v-for="track in tracks" :key="track.top_number" v-if="!tracks.error_name">
+    <v-list v-if="!tracks.error_name && !loading">
+      <v-list-item v-for="track in tracks" :key="track.top_number">
         <v-list-item-title>{{ track.top_number }} | {{ track.name }}</v-list-item-title>
         <v-list-item-subtitle>
           <a :href="track.artist_link">{{ track.artist_name }}</a>
@@ -19,17 +17,22 @@
         <v-divider></v-divider>
       </v-list-item>
     </v-list>
-
+    <skeleton-loader :loading="loading"></skeleton-loader>
   </div>
 </template>
 
 <script>
+import SkeletonLoader from "@/components/tags/SkeletonLoader";
+
 export default {
   name: "TracksTop",
   props: [
     "tracks",
     "loading"
-  ]
+  ],
+  components: {
+    SkeletonLoader
+  }
 }
 </script>
 
