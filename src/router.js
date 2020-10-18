@@ -17,6 +17,12 @@ const router = new VueRouter({
             component: () => import("./components/pages/WatchTop.vue"),
         },
         {
+            path: "/artists/search/",
+            name: "artist_search",
+            meta: {},
+            component: () => import("./components/pages/SearchArtist.vue")
+        },
+        {
             path: "/artists/:artist_name",
             name: "artist_detail",
             meta: {},
