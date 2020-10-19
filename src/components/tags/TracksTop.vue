@@ -1,23 +1,23 @@
 <template>
   <div class="top">
-    <v-list v-if="!tracks.error_name && !loading">
-      <v-list-item v-for="track in tracks" :key="track.top_number">
-        <v-list-item-title>{{ track.top_number }} | {{ track.name }}</v-list-item-title>
-        <v-list-item-subtitle>
-          <a :href="track.artist_link">{{ track.artist_name }}</a>
-        </v-list-item-subtitle>
-
-        <v-list-item-subtitle>
-          <a :href="track.album_link">{{ track.album_name }}</a> {{ track.release_date }}
-        </v-list-item-subtitle>
-
-        <v-list-item-avatar tile>
-          <img :src="track.album_img_link" alt="ALBUM">
-        </v-list-item-avatar>
+    <div>
+      <div class="top-item" v-for="track in tracks">
+        <a :href="track.artist_link" class="artist-link">{{ track.artist_name }}</a>
         <v-divider></v-divider>
-      </v-list-item>
-    </v-list>
-    <skeleton-loader :loading="loading"></skeleton-loader>
+        <v-row>
+          <v-col>
+            <a :href="track.album_link" class="album-link">{{ track.album_name }}</a>
+          </v-col>
+
+          <v-col cols="3">
+            <span class="release-date">{{ track.release_date }}</span>
+          </v-col>
+        </v-row>
+
+        <v-divider/>
+      </div>
+      <skeleton-loader :loading="loading"></skeleton-loader>
+    </div>
   </div>
 </template>
 
@@ -37,5 +37,18 @@ export default {
 </script>
 
 <style scoped>
+.artist-link {
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-size: large;
+}
 
+.top-item {
+  padding: 10px;
+}
+
+.release-date {
+
+}
 </style>

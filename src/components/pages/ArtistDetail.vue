@@ -15,7 +15,6 @@
         <h1>{{ artist.name }}</h1>
       </v-col>
     </v-row>
-    <h2>Track top:</h2>
     <tracks-top v-if="is_view_top" :tracks="artist.top" :loading="loadingArtistInfo"></tracks-top>
 
   </div>

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import HeaderView from "./components/tags/HeaderView";
+import HeaderView from "./components/tags/Navigation";
 
 export default {
   name: "Layout",
