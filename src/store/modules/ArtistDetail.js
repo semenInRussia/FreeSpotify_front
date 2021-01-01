@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base_artist_detail_url = "http://127.0.0.1:8000/api/artists/"
+const base_artist_detail_url = "http://127.0.0.1:8000/api/artists/detail/"
 
 export default {
     state: {
@@ -17,18 +17,18 @@ export default {
     },
     actions: {
         fetchArtistInfo(ctx, artist_name) {
-            ctx.commit("toggleIsLoadingArtistInfo")
             const artist_detail_url = base_artist_detail_url + artist_name
-
+            ctx.commit("toggleIsLoadingArtistInfo")
             let artist_info;
 
             axios.get(artist_detail_url)
                 .then((res) => {
                         artist_info = res.data;
-                        ctx.commit("setArtistInfo", artist_info)
                         ctx.commit("toggleIsLoadingArtistInfo")
+                        ctx.commit("setArtistInfo", artist_info)
                     }
-                );
+                )
+
         }
     },
     mutations: {

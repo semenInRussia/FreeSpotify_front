@@ -2,7 +2,7 @@
   <div class="index">
     <v-alert type="warning">Это сайт СЁМЫ!</v-alert>
     <v-alert type="info" dense>
-       На этом сайте вы сможете бесплатно найти треки данные с SPOTIFY, и бесплатно скачать с сайта rockNations.cc
+       На этом сайте вы сможете бесплатно найти треки данные с SPOTIFY, и бесплатно скачать с сайта rockNations.su
     </v-alert>
   </div>
 

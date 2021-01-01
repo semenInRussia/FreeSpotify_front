@@ -3,19 +3,22 @@
     <!--    Artist info-->
     <messages :response="artist"></messages>
     <v-row align-content="center">
-      <v-col cols="6">
-        <v-img :src="artist.img_link"
+      <v-col cols="4">
+        <v-img :src="artist.link_on_img"
                contain
                max-width="800px"
                class="rounded-lg"
         ></v-img>
       </v-col>
 
-      <v-col cols="6">
+      <v-col cols="8">
         <h1>{{ artist.name }}</h1>
       </v-col>
     </v-row>
-    <tracks-top v-if="is_view_top" :tracks="artist.top" :loading="loadingArtistInfo"></tracks-top>
+
+    <v-divider></v-divider>
+
+    <tracks-top v-if="is_view_top" :tracks="artist.top" :artist="artist" :loading="loadingArtistInfo"></tracks-top>
 
   </div>
 </template>
