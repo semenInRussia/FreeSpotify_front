@@ -1,20 +1,8 @@
 <template>
   <div>
-    <!--    Artist info-->
     <messages :response="artist"></messages>
-    <v-row align-content="center">
-      <v-col cols="4">
-        <v-img :src="artist.link_on_img"
-               contain
-               max-width="800px"
-               class="rounded-lg"
-        ></v-img>
-      </v-col>
 
-      <v-col cols="8">
-        <h1>{{ artist.name }}</h1>
-      </v-col>
-    </v-row>
+    <artist-header :artist="artist"/>
 
     <v-divider></v-divider>
 
@@ -25,8 +13,9 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
-import TracksTop from "@/components/tags/TracksTop";
+import TracksTop from "@/components/tags/ArtistTop";
 import Messages from "@/components/tags/Messages";
+import ArtistHeader from "@/components/pages/ArtistHeader";
 
 export default {
   name: "ArtistDetail",
@@ -42,6 +31,7 @@ export default {
     this.is_view_top = true
   },
   components: {
+    ArtistHeader,
     TracksTop,
     Messages
   },
@@ -50,6 +40,3 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
