@@ -22,17 +22,11 @@
               nav
               dense
           >
-            <v-list-item link href="/top">
-              <v-list-item-icon>
-                <v-icon>fas fa-list</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>Top</v-list-item-content>
-            </v-list-item>
-            <v-list-item link href="/artists/search/">
+            <v-list-item link href="/search/">
               <v-list-item-icon>
                 <v-icon>fab fa-searchengin</v-icon>
               </v-list-item-icon>
-              <v-list-item-content>Search bands</v-list-item-content>
+              <v-list-item-content>Search</v-list-item-content>
             </v-list-item>
           </v-list>
         </v-navigation-drawer>

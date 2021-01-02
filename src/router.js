@@ -11,10 +11,10 @@ const router = new VueRouter({
             component: () => import("./components/pages/index.vue")
         },
         {
-            path: "/artists/search/",
-            name: "artist_search",
+            path: "/search",
+            name: "search",
             meta: {},
-            component: () => import("./components/pages/ArtistSearch.vue")
+            component: () => import("./components/pages/search.vue")
         },
         {
             path: "/artists/:artist_name",

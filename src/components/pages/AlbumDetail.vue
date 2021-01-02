@@ -1,40 +1,21 @@
 <template>
   <div class="album-detail">
-    <div class="album-head">
-      <v-row>
-        <v-col cols="9">
-          <v-col cols="6">
-            <v-img :src="album.link_on_img"
-                   contain
-                   max-width="800px"
-                   class="rounded-lg"
-            ></v-img>
-          </v-col>
-        </v-col>
+    <album-header :album="album"/>
 
-        <v-col>
-          <span class="album-title">
-            {{ album.name }}
-          </span>
-        </v-col>
-      </v-row>
-    </div>
+    <v-divider/>
 
-    <div class="album-tracks">
-      <ol>
-        <li v-for="track in album.tracks">
-          {{ track.name }}
-        </li>
-      </ol>
-    </div>
+    <album-tracks :album="album"/>
   </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import AlbumHeader from "@/components/tags/AlbumHeader";
+import AlbumTracks from "@/components/tags/AlbumTracks";
 
 export default {
   name: "AlbumDetail",
+  components: {AlbumTracks, AlbumHeader},
   methods: mapActions([`fetchAlbum`]),
   computed: mapGetters([`album`]),
 
@@ -48,10 +29,3 @@ export default {
 }
 </script>
 
-<style scoped>
-
-.album-title {
-  font-weight: bold;
-  font-size: 100px;
-}
-</style>
