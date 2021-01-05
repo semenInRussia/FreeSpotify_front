@@ -15,7 +15,7 @@
 import {mapActions, mapGetters} from "vuex";
 import TracksTop from "@/components/tags/ArtistTop";
 import Messages from "@/components/tags/Messages";
-import ArtistHeader from "@/components/pages/ArtistHeader";
+import ArtistHeader from "@/components/tags/ArtistHeader";
 
 export default {
   name: "ArtistDetail",

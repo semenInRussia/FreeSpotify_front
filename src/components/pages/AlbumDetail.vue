@@ -20,11 +20,14 @@ export default {
   computed: mapGetters([`album`]),
 
   mounted() {
-    this.fetchAlbum({
-          artist_name: this.$route.params.artist_name,
-          album_name: this.$route.params.album_name
-        }
-    )
+    const artist_model = {
+      artist: {
+        name: this.$route.params.artist_name
+      },
+      name: this.$route.params.album_name
+    }
+
+    this.fetchAlbum(artist_model)
   }
 }
 </script>

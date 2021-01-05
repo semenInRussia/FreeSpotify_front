@@ -31,7 +31,7 @@
           </v-row>
           <v-row>
             <v-btn
-                :href="artist_link"
+                @click="redirect()"
                 color="primary"
             >
               View artist
@@ -48,9 +48,9 @@ const BASE_DETAIL_ARTIST_URL = "/artists/"
 export default {
   name: 'album-header',
 
-  computed: {
-    artist_link() {
-      return BASE_DETAIL_ARTIST_URL + this.album.artist.name
+  methods: {
+    redirect() {
+      this.album.artist.$entity.redirect(this.$router)
     }
   },
 

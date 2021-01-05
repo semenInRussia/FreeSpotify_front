@@ -23,9 +23,11 @@
             </div>
           </v-col>
           <v-col>
-            <a :href="track.album.link" class="album-link">
-              {{ track.album.name }}
-            </a>
+            <download-link :object="track.album">
+              <a :href="track.album.link" class="album-link">
+                {{ track.album.name }}
+              </a>
+            </download-link>
           </v-col>
           <v-col>
             <div class="release-date">
@@ -46,12 +48,18 @@
   </div>
 </template>
 <script>
+import DownloadLink from "@/components/tags/DownloadLink";
+
 export default {
   name: 'TopItem',
   props: {
     artist: {},
     index: {},
     track: {}
+  },
+
+  components: {
+    DownloadLink
   }
 }
 </script>
