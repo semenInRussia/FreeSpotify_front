@@ -1,6 +1,13 @@
 <template>
   <div class="download-link">
-    <slot @contextmenu="openMenu"/>
+    <div v-bind="$attrs">
+      <a
+        :href="object.link"
+        @contextmenu="openMenu"
+    >
+      {{ object.name }}
+    </a>
+    </div>
 
     <div class="buttons" v-if="show">
       <v-btn
@@ -19,6 +26,7 @@
 <script>
 export default {
   name: "DownloadLink",
+  inheritAttrs: false,
 
   data() {
     return {
@@ -26,10 +34,9 @@ export default {
     }
   },
   methods: {
-    openMenu(e) {
+    openMenu() {
+      console.log(this.$attrs)
       this.show = !(this.show)
-
-      e.preventDefault()
     },
 
     redirect() {
@@ -38,8 +45,8 @@ export default {
   },
 
   props: {
-    object: {}
-  }
+    object: {},
+  },
 }
 </script>
 

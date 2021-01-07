@@ -11,9 +11,7 @@
 
       <v-col cols="7">
         <v-row class="artist">
-          <a :href="artist.link" class="artist-link">
-            {{ artist.name }}
-          </a>
+          <download-link :object="track.artist" class="artist-link"></download-link>
         </v-row>
         <v-divider/>
         <v-row>
@@ -23,11 +21,7 @@
             </div>
           </v-col>
           <v-col>
-            <download-link :object="track.album">
-              <a :href="track.album.link" class="album-link">
-                {{ track.album.name }}
-              </a>
-            </download-link>
+            <download-link :object="track.album" class="album-link" ></download-link>
           </v-col>
           <v-col>
             <div class="release-date">
@@ -63,8 +57,8 @@ export default {
   }
 }
 </script>
-<style scoped>
-.artist-link {
+<style>
+.artist-link a{
   font-weight: bold;
   color: white;
   text-decoration: none;
@@ -85,11 +79,11 @@ export default {
   font-size: 19px;
 }
 
-.track-name {
+.track-name a{
   font-size: 20px;
 }
 
-.album-link {
+.album-link a{
   text-decoration-line: underline;
   color: white;
   font-weight: bold;
