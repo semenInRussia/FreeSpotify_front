@@ -1,0 +1,24 @@
+input {
+    background: #333333;
+
+    border-right: none;
+    border-top: none;
+    border-left: none;
+
+    width: 600px;
+    height: 50px;
+
+    color: #cccccc;
+    font-size: 40px;
+}
+
+input:focus {
+    border-bottom-color: #7777;
+    transition-duration: 0.3s;
+
+    border-right: none;
+    border-top: none;
+    border-left: none;
+
+    outline: none;
+}

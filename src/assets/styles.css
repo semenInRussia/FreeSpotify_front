@@ -16,11 +16,12 @@ body {
 
 .active-nav-link {
     font-weight: bold;
+    font-size: 35px;
+
     border-bottom: azure 2px solid;
     border-top: azure 2px solid;
-    font-size: 35px;
     margin: 20px;
-    transition: all;
+
     transition-duration: .5s;
 }
 
@@ -31,4 +32,11 @@ body {
 .navigation a {
     color: white;
     text-decoration: none;
+}
+
+.current-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

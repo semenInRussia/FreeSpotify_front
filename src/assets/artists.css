@@ -1,0 +1,6 @@
+.artists-form {
+    display: flex;
+    flex-wrap: revert;
+    flex-direction: column;
+    align-items: center;
+}

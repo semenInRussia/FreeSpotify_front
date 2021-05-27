@@ -1,11 +1,10 @@
 import React from "react";
 import Routings from "./components/Routings";
+import {routings} from "./appRoutings";
 
 function App() {
   return (
-    <div className="App">
-      <Routings/>
-    </div>
+      <Routings routings={routings}/>
   );
 }
 
