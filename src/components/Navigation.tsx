@@ -1,7 +1,12 @@
 import React, {Fragment} from "react";
 import NavLink from "./NavLink";
+import {Routing} from "../types/routing";
 
-const Navigation = (props) => (
+interface NavigationProps {
+    routings: Routing[]
+}
+
+const Navigation: React.FC<NavigationProps> = (props) => (
     <Fragment>
         <ul className="navigation">
             {props.routings.map((routing, index) => (

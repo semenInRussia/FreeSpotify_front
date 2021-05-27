@@ -1,16 +1,16 @@
 import {FETCH_ALBUM, FETCH_ARTIST, FETCH_TRACK} from "./types";
 
-const fetchArtist = (state, payload) => ({
+const fetchArtist = (state: any, payload: any) => ({
     ...state,
     artist: payload
 })
 
-const fetchAlbum = (state, payload) => ({
+const fetchAlbum = (state: any, payload: any) => ({
     ...state,
     album: payload
 })
 
-const fetchTrack = (state, payload) => ({
+const fetchTrack = (state: any, payload: any) => ({
     ...state,
     track: payload
 })
@@ -21,8 +21,8 @@ const dispatchTypes = {
     [FETCH_TRACK]: fetchTrack
 }
 
-const rootReducer = (state, action) => {
-    const actionCallback = dispatchTypes[action.type] || (state => state);
+const rootReducer = (state: any, action: any) => {
+    const actionCallback = dispatchTypes[action.type] || ((state: any) => state);
 
     return actionCallback(state, action.payload)
 }

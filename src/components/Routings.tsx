@@ -6,14 +6,19 @@ import {
 } from "react-router-dom";
 
 import Navigation from "./Navigation";
+import {Routing} from "../types/routing";
 
-export default function Routings({routings}) {
+interface RoutingsProps {
+    routings: Routing[]
+}
+
+const Routings: React.FC<RoutingsProps> = (props) => {
     return (
         <Router>
-            <Navigation routings={routings}/>
+            <Navigation routings={props.routings}/>
 
             <Switch>
-                {routings.map((routing, index) => (
+                {props.routings.map((routing, index) => (
                     <Route
                         path={routing.url}
                         key={index.toString()}
@@ -29,3 +34,5 @@ export default function Routings({routings}) {
         </Router>
     );
 }
+
+export default Routings;

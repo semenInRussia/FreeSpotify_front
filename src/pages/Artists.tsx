@@ -8,16 +8,20 @@ import {fetchArtist} from "../redux/actions";
 import "../assets/artists.css";
 
 
-const Artists = ({fetchArtist}) => {
-    const [artistName, setArtistName] = useState('')
+interface ArtistsProps {
+    fetchArtist: any
+}
 
-    const sendData = (e) => {
+const Artists: React.FC<ArtistsProps> = ({fetchArtist}) => {
+    const [artistName, setArtistName] = useState<string>('')
+
+    const sendData = (e: any) => {
         e.preventDefault()
 
         fetchArtist(artistName)
     }
 
-    const createHandlerTextInput = (stateSetter) => event => {
+    const createHandlerTextInput = (stateSetter: any) => (event: any) => {
         stateSetter(event.target.valueOf().value.toUpperCase())
     }
 
@@ -34,8 +38,8 @@ const Artists = ({fetchArtist}) => {
     )
 };
 
-const mapDispatchToProps = dispatch => ({
-    fetchArtist: (artistName) => dispatch(fetchArtist(artistName))
+const mapDispatchToProps = (dispatch: any) => ({
+    fetchArtist: (artistName: string) => dispatch(fetchArtist(artistName))
 })
 
 export default connect(null, mapDispatchToProps)(Artists);
