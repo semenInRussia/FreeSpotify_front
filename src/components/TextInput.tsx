@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {ChangeEventHandler, FormEventHandler} from 'react'
 import '../assets/text-input.css'
 
 interface TextInputProps {
-    onSubmit?: any,
-    onChange?: any,
-    value: any
+    onSubmit?: FormEventHandler<HTMLInputElement>,
+    onChange?: ChangeEventHandler<HTMLInputElement>,
+    value: string
 }
 
 const TextInput: React.FC<TextInputProps> = ({onSubmit, onChange, value}) => (

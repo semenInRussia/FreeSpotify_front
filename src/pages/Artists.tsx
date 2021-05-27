@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {ChangeEvent, Fragment, SyntheticEvent, useState} from "react";
 import {connect} from "react-redux";
 
 import TextInput from "../components/TextInput";
@@ -9,20 +9,20 @@ import "../assets/artists.css";
 
 
 interface ArtistsProps {
-    fetchArtist: any
+    fetchArtist: (artistName: string) => void
 }
 
 const Artists: React.FC<ArtistsProps> = ({fetchArtist}) => {
     const [artistName, setArtistName] = useState<string>('')
 
-    const sendData = (e: any) => {
+    const sendData = (e: SyntheticEvent) => {
         e.preventDefault()
 
         fetchArtist(artistName)
     }
 
-    const createHandlerTextInput = (stateSetter: any) => (event: any) => {
-        stateSetter(event.target.valueOf().value.toUpperCase())
+    const createHandlerTextInput = (stateSetter: (value: string) => void) => (event: ChangeEvent<HTMLInputElement>) => {
+        stateSetter(event.target.value.toUpperCase())
     }
 
     return (

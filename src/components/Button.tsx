@@ -1,9 +1,9 @@
-import React from "react";
+import React, {FormEventHandler} from "react";
 import "../assets/button.css";
 
 interface ButtonProps {
     children: React.ReactNode | React.ReactChildren,
-    onSubmit?: () => void
+    onSubmit?: FormEventHandler<HTMLButtonElement>
 }
 
 const Button: React.FC<ButtonProps> = (buttonProps) => (
