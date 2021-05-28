@@ -1,5 +1,6 @@
 export interface Routing {
     url: string,
     name: string,
-    component: any
+    component: any,
+    notViewInNavbar?: boolean
 }
