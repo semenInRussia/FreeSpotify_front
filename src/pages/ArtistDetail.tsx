@@ -5,6 +5,7 @@ import {useParams} from "react-router-dom";
 import {Artist} from "../types/entities";
 import {fetchArtist} from "../store/actions-creators";
 import {RootState} from "../types/redux/states";
+import Loader from "../components/Loader";
 
 
 type ArtistDetailParams = {
@@ -27,11 +28,19 @@ const ArtistDetail: React.FC<ArtistDetailProps> = (props) => {
         }
 
         props.fetchArtist(newArtist)
-    }, [artistName, props])
+    }, [])
 
-    return (
-        <h1>{props.artist?.name || 'Loading...'}</h1>
-    )
+    if (props.loading) {
+        return (
+            <Loader/>
+        )
+    }
+
+    else {
+        return (
+            <h1>{props.artist?.name}</h1>
+        )
+    }
 }
 
 
