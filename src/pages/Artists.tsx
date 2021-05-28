@@ -1,26 +1,30 @@
 import React, {Fragment, SyntheticEvent} from "react";
-import {connect} from "react-redux";
+import Button from "../components/Button";
+import {useHistory} from "react-router-dom";
 
 import TextInput from "../components/TextInput";
-import Button from "../components/Button";
 import {useTextInputToUpperCase} from "../hooks/formHooks";
-import {fetchArtist} from "../store/actions-creators";
+
+import {getPathToArtist} from "../entities";
 
 import "../assets/artists.css";
 
 
-
-type ArtistsProps = {
-    fetchArtist: (artistName: string) => void
-}
-
-const Artists: React.FC<ArtistsProps> = ({fetchArtist}) => {
+const Artists: React.FC = () => {
     const [artistName, onChangeArtistName] = useTextInputToUpperCase('')
+
+    const routerHistory = useHistory()
 
     const sendData = (e: SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        fetchArtist(artistName)
+        if (artistName) {
+            const artist = {
+                name: artistName
+            }
+
+            routerHistory.push(getPathToArtist(artist))
+        }
     }
 
     return (
@@ -36,9 +40,4 @@ const Artists: React.FC<ArtistsProps> = ({fetchArtist}) => {
     )
 };
 
-
-const mapDispatchToProps = (dispatch: any) => ({
-    fetchArtist: (artistName: string) => dispatch(fetchArtist(artistName))
-})
-
-export default connect(null, mapDispatchToProps)(Artists);
+export default Artists;

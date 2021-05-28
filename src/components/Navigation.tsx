@@ -7,8 +7,6 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = (props) => {
-    console.log(props.routings.filter(routing => !routing.notViewInNavbar))
-
     return (
         <Fragment>
             <ul className="navigation">
