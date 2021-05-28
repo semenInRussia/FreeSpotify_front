@@ -1,10 +1,10 @@
-import {FETCH_ALBUM, FETCH_ARTIST, FETCH_TRACK} from "./types";
 import axios from "axios";
+import {ActionTypes} from "../types/redux/actions";
 
 const API_URL = 'http://localhost:8000/api'
 
 
-const dispatchGetFetchAction = (url: string, actionType: string, dispatch: any) => {
+function dispatchGetFetchAction(url: string, actionType: ActionTypes, dispatch: any) {
     axios.get(url)
         .then((res) => (
             dispatch({
@@ -15,36 +15,36 @@ const dispatchGetFetchAction = (url: string, actionType: string, dispatch: any) 
         .catch((e) => console.log(url, actionType, e))
 }
 
-export const artistDetailUrl = (artistName: string) => (`${API_URL}/artists/detail/${artistName}`)
+const artistDetailUrl = (artistName: string): string => (`${API_URL}/artists/detail/${artistName}`)
 
 export const fetchArtist = (artistName: string) => (dispatch: any) => {
     dispatchGetFetchAction(
         artistDetailUrl(artistName),
-        FETCH_ARTIST,
+        ActionTypes.FETCH_ARTIST,
         dispatch
     )
 }
 
-export const albumDetailUrl = (artistName: string, albumName: string) => (
+const albumDetailUrl = (artistName: string, albumName: string) => (
     `${API_URL}/albums/detail/${artistName}/${albumName}`
 )
 
 export const fetchAlbum = (artistName: string, albumName: string) => (dispatch: any) => {
     dispatchGetFetchAction(
         albumDetailUrl(artistName, albumName),
-        FETCH_ALBUM,
+        ActionTypes.FETCH_ALBUM,
         dispatch
     )
 }
 
-export const trackDetailUrl = (artistName: string, albumName: string, trackName: string) => (
+const trackDetailUrl = (artistName: string, albumName: string, trackName: string) => (
     `${API_URL}/albums/track/${artistName}/${albumName}/${trackName}`
 )
 
 export const fetchTrack = (artistName: string, albumName: string, trackName: string) => (dispatch: any) => {
     dispatchGetFetchAction(
         trackDetailUrl(artistName, albumName, trackName),
-        FETCH_TRACK,
+        ActionTypes.FETCH_TRACK,
         dispatch
     )
 }

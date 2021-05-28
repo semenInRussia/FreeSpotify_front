@@ -1,28 +1,26 @@
-import React, {ChangeEvent, Fragment, SyntheticEvent, useState} from "react";
+import React, {Fragment, SyntheticEvent} from "react";
 import {connect} from "react-redux";
 
 import TextInput from "../components/TextInput";
 import Button from "../components/Button";
-import {fetchArtist} from "../redux/actions";
+import {useTextInputToUpperCase} from "../hooks/formHooks";
+import {fetchArtist} from "../store/actions-creators";
 
 import "../assets/artists.css";
 
 
-interface ArtistsProps {
+
+type ArtistsProps = {
     fetchArtist: (artistName: string) => void
 }
 
 const Artists: React.FC<ArtistsProps> = ({fetchArtist}) => {
-    const [artistName, setArtistName] = useState<string>('')
+    const [artistName, onChangeArtistName] = useTextInputToUpperCase('')
 
-    const sendData = (e: SyntheticEvent) => {
+    const sendData = (e: SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         fetchArtist(artistName)
-    }
-
-    const createHandlerTextInput = (stateSetter: (value: string) => void) => (event: ChangeEvent<HTMLInputElement>) => {
-        stateSetter(event.target.value.toUpperCase())
     }
 
     return (
@@ -30,13 +28,14 @@ const Artists: React.FC<ArtistsProps> = ({fetchArtist}) => {
             <h1>Search Artists!</h1>
 
             <form onSubmit={sendData} className='artists-form'>
-                <TextInput value={artistName} onChange={createHandlerTextInput(setArtistName)}/>
+                <TextInput value={artistName} onChange={onChangeArtistName}/>
 
                 <Button>GO!</Button>
             </form>
         </Fragment>
     )
 };
+
 
 const mapDispatchToProps = (dispatch: any) => ({
     fetchArtist: (artistName: string) => dispatch(fetchArtist(artistName))

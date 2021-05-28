@@ -7,6 +7,7 @@ import {
 
 import Navigation from "./Navigation";
 import {Routing} from "../types/routing";
+import {renderToStaticMarkup, renderToString} from "react-dom/server";
 
 interface RoutingsProps {
     routings: Routing[]
@@ -17,20 +18,20 @@ const Routings: React.FC<RoutingsProps> = (props) => {
         <Router>
             <Navigation routings={props.routings}/>
 
-            <Switch>
-                {props.routings.map((routing, index) => (
-                    <Route
-                        path={routing.url}
-                        key={index.toString()}
-                        exact
-                    >
-                        <div className="current-app">
-                            {routing.component}
-                        </div>
-                    </Route>
+                <Switch>
+                    {props.routings.map((routing, index) => (
+                        <Route
+                            path={routing.url}
+                            key={index.toString()}
+                            exact
+                        >
+                            <div className='current-app'>
+                                {routing.component}
+                            </div>
+                        </Route>
 
-                ))}
-            </Switch>
+                    ))}
+                </Switch>
         </Router>
     );
 }
