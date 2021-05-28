@@ -1,5 +1,6 @@
 import axios from "axios";
 import {ActionTypes} from "../types/redux/actions";
+import {Album, Artist, Track} from "../types/entities";
 
 const API_URL = 'http://localhost:8000/api'
 
@@ -15,35 +16,35 @@ function dispatchGetFetchAction(url: string, actionType: ActionTypes, dispatch: 
         .catch((e) => console.log(url, actionType, e))
 }
 
-const artistDetailUrl = (artistName: string): string => (`${API_URL}/artists/detail/${artistName}`)
+const artistDetailUrl = (artist: Artist): string => (`${API_URL}/artists/detail/${artist.name}`)
 
-export const fetchArtist = (artistName: string) => (dispatch: any) => {
+export const fetchArtist = (artist: Artist) => (dispatch: any) => {
     dispatchGetFetchAction(
-        artistDetailUrl(artistName),
+        artistDetailUrl(artist),
         ActionTypes.FETCH_ARTIST,
         dispatch
     )
 }
 
-const albumDetailUrl = (artistName: string, albumName: string) => (
-    `${API_URL}/albums/detail/${artistName}/${albumName}`
+const albumDetailUrl = (album: Album) => (
+    `${API_URL}/albums/detail/${album.artist?.name}/${album.artist?.name}`
 )
 
-export const fetchAlbum = (artistName: string, albumName: string) => (dispatch: any) => {
+export const fetchAlbum = (album: Album) => (dispatch: any) => {
     dispatchGetFetchAction(
-        albumDetailUrl(artistName, albumName),
+        albumDetailUrl(album),
         ActionTypes.FETCH_ALBUM,
         dispatch
     )
 }
 
-const trackDetailUrl = (artistName: string, albumName: string, trackName: string) => (
-    `${API_URL}/albums/track/${artistName}/${albumName}/${trackName}`
+const trackDetailUrl = (track: Track) => (
+    `${API_URL}/albums/track/${track.artist?.name}/${track.album?.name}/${track.name}`
 )
 
-export const fetchTrack = (artistName: string, albumName: string, trackName: string) => (dispatch: any) => {
+export const fetchTrack = (track: Track) => (dispatch: any) => {
     dispatchGetFetchAction(
-        trackDetailUrl(artistName, albumName, trackName),
+        trackDetailUrl(track),
         ActionTypes.FETCH_TRACK,
         dispatch
     )
