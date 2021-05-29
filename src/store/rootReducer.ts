@@ -2,13 +2,12 @@ import {RootState} from "../types/redux/states";
 import {
     RootAction,
     ActionTypes,
-    FetchAlbumAction,
-    FetchArtistAction,
-    FetchTrackAction,
     ShowLoaderAction,
     HideLoaderAction,
 } from "../types/redux/actions";
 import {Reducer} from "redux";
+import {Album, Artist, Track} from "../types/entities";
+import {createFetchSomethingCreatorAction} from "./action-creators/_utils";
 
 
 const defaultState: RootState = {
@@ -18,20 +17,11 @@ const defaultState: RootState = {
     loading: false
 }
 
-const fetchArtist = (state: RootState, action: FetchArtistAction): RootState => ({
-    ...state,
-    artist: action.payload
-})
+const fetchArtist = createFetchSomethingCreatorAction<Artist>("artist")
 
-const fetchAlbum = (state: RootState, action: FetchAlbumAction): RootState => ({
-    ...state,
-    album: action.payload
-})
+const fetchAlbum = createFetchSomethingCreatorAction<Album>("album")
 
-const fetchTrack = (state: RootState, action: FetchTrackAction): RootState => ({
-    ...state,
-    track: action.payload
-})
+const fetchTrack = createFetchSomethingCreatorAction<Track>("track")
 
 const showLoader = (state: RootState, _: ShowLoaderAction): RootState => ({
     ...state,

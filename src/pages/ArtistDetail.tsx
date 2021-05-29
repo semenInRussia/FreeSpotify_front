@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
-
 import {useParams} from "react-router-dom";
+
 import {Artist} from "../types/entities";
-import {fetchArtist} from "../store/actions-creators";
+import {fetchArtist} from "../store/action-creators/artist";
 import {RootState} from "../types/redux/states";
 import Loader from "../components/Loader";
 
@@ -43,13 +43,12 @@ const ArtistDetail: React.FC<ArtistDetailProps> = (props) => {
     }
 }
 
-
 const mapDispatchToProps = (dispatch: any) => ({
     fetchArtist: (artist: Artist) => dispatch(fetchArtist(artist))
 })
 
 const mapStateToProps = (state: RootState) => ({
-    artist: state.artist,
+    artist: state.artist?.object,
     loading: state.loading,
 })
 

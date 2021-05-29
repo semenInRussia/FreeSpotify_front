@@ -10,20 +10,16 @@ export enum ActionTypes {
     HIDE_LOADER = 'HIDE_LOADER',
 }
 
-export type FetchArtistAction = {
-    payload: Artist,
-    type: ActionTypes.FETCH_ARTIST
+export type FetchSomethingAction<T, A = string> = {
+    payload: T | Error,
+    type: A
 }
 
-export type FetchAlbumAction = {
-    payload: Album,
-    type: ActionTypes.FETCH_ALBUM
-}
+export type FetchArtistAction = FetchSomethingAction<Artist, ActionTypes.FETCH_ARTIST>
 
-export type FetchTrackAction = {
-    payload: Track,
-    type: ActionTypes.FETCH_TRACK
-}
+export type FetchAlbumAction = FetchSomethingAction<Album, ActionTypes.FETCH_ALBUM>
+
+export type FetchTrackAction = FetchSomethingAction<Track, ActionTypes.FETCH_TRACK>
 
 export type ShowLoaderAction = {
     payload: {},
