@@ -10,10 +10,16 @@ import {Album, Artist, Track} from "../types/entities";
 import {createFetchSomethingCreatorAction} from "./action-creators/_utils";
 
 
+const defaultStateForFetch = {
+    error: {
+        isCaught: false
+    }
+}
+
 const defaultState: RootState = {
-    artist: undefined,
-    album: undefined,
-    track: undefined,
+    artist: defaultStateForFetch,
+    album: defaultStateForFetch,
+    track: defaultStateForFetch,
     loading: false
 }
 

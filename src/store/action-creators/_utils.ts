@@ -19,7 +19,12 @@ export function dispatchGetFetchAction(
                 payload: res.data
             })
         })
-        .catch(console.log)
+        .catch(err => {
+            dispatch({
+                type: actionType,
+                payload: err
+            })
+        })
         .finally(() => dispatch(hideLoader({})))
 }
 

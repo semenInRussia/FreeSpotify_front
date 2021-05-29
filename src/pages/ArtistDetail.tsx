@@ -4,8 +4,9 @@ import {useParams} from "react-router-dom";
 
 import {Artist} from "../types/entities";
 import {fetchArtist} from "../store/action-creators/artist";
-import {RootState} from "../types/redux/states";
+import {ErrorState, RootState} from "../types/redux/states";
 import Loader from "../components/Loader";
+import ErrorMessage from "../components/ErrorMessage";
 
 
 type ArtistDetailParams = {
@@ -16,6 +17,7 @@ type ArtistDetailProps = {
     artist?: Artist,
     fetchArtist: (artist: Artist) => void,
     loading: boolean,
+    error: ErrorState
 }
 
 const ArtistDetail: React.FC<ArtistDetailProps> = (props) => {
@@ -36,6 +38,12 @@ const ArtistDetail: React.FC<ArtistDetailProps> = (props) => {
         )
     }
 
+    if (props.error.isCaught) {
+        return (
+            <ErrorMessage name={props.error.name} message={props.error.message}/>
+        )
+    }
+
     else {
         return (
             <h1>{props.artist?.name}</h1>
@@ -50,6 +58,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 const mapStateToProps = (state: RootState) => ({
     artist: state.artist?.object,
     loading: state.loading,
+    error: state.artist.error
 })
 
 

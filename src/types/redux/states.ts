@@ -1,9 +1,9 @@
 import {Album, Artist, Track} from "../entities";
 
 export type RootState = {
-    artist?: ArtistState,
-    album?: AlbumState,
-    track?: TrackState,
+    artist: ArtistState,
+    album: AlbumState,
+    track: TrackState,
 
     loading: boolean,
 }
