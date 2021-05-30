@@ -1,0 +1,29 @@
+.artist-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.artist-main-info {
+    display: grid;
+    grid-template-columns: 2fr 8fr 1fr 16fr 2fr;
+    grid-gap: 50px;
+}
+
+.artist-header {
+    grid-column-start: 2;
+}
+
+.image {
+    grid-column-end: 5;
+}
+
+.message-for-artist {
+    color: #cccccc;
+    font-size: 20px;
+}
+
+.artist-top {
+    grid-area: top;
+}

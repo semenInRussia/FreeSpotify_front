@@ -7,6 +7,7 @@ import {fetchArtist} from "../store/action-creators/artist";
 import {ErrorState, RootState} from "../types/redux/states";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
+import ArtistInfo from "../components/ArtistInfo";
 
 
 type ArtistDetailParams = {
@@ -44,11 +45,13 @@ const ArtistDetail: React.FC<ArtistDetailProps> = (props) => {
         )
     }
 
-    else {
+    if (props.artist) {
         return (
-            <h1>{props.artist?.name}</h1>
+            <ArtistInfo artist={props.artist}/>
         )
     }
+
+    return <h1>WTF????</h1>
 }
 
 const mapDispatchToProps = (dispatch: any) => ({

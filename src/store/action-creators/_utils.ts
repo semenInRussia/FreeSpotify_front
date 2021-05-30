@@ -35,6 +35,7 @@ function fetchSomethingCreatorAction<O>(
 ): RootState {
 
     const somethingOrError: O | Error = action.payload
+
     let somethingState: ForFetchState<O>;
 
     if (somethingOrError instanceof Error) {

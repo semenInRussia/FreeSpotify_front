@@ -1,7 +1,6 @@
 import React from 'react';
 
 
-// Link on ErrorState...
 type ErrorMessageProps = {
     name?: string,
     message?: string
